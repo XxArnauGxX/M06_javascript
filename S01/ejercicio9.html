@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercise</title>
+</head>
+
+<body>
+    <h1>JavaScript</h1>
+    <p>Write a year: <input id="year" type="number" /></p>
+    <p>Write a month: <input id="month" type="number" /></p>
+    <p>Write a day: <input id="day" type="number" /></p>
+    <button id="execute">Execute</button><br /><br />
+    <textarea name="" id="textArea" cols="30" rows="10"></textarea>
+
+    <script>
+        const button = document.getElementById('execute');
+        const textarea = document.getElementById('textArea');
+        const yearInput = document.getElementById('year');
+        const monthInput = document.getElementById('month');
+        const dayInput = document.getElementById('day');
+
+
+        button.addEventListener("click", () => {
+            console.log('Button clicked!');
+            let year = yearInput.value;
+            let month = monthInput.value;
+            let day = dayInput.value;
+
+            console.log('Creando fecha actual...');
+            let date = new Date;
+            date.setHours(0, 0, 0, 0);
+            let inputDate = new Date(year, month - 1, day);
+            console.log(`Fecha actual: ${date}`);
+            console.log(`Fecha introducida: ${inputDate}`);
+
+            const diffTime = Math.abs(inputDate.getTime() - date.getTime());
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            if (inputDate.getTime() === date.getTime()) {
+                textarea.textContent = 'La fecha introducida es hoy!';
+            } else if (inputDate.getTime() > date.getTime()) {
+                textarea.textContent = `La fecha introducida es posterior a la actual. Dias de diferencia: ${diffDays}`;
+            } else if (inputDate.getTime() < date.getTime()) {
+                textarea.textContent = `La fecha introducida es anterior a la actual. Dias de diferencia: ${diffDays}`;
+            }
+        });
+    </script>
+</body>
+
+</html>
