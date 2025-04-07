@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial</title>
+</head>
+
+<body>
+    <h1>Hello World!</h1>
+
+    <script>
+        let input;
+
+        function question() {
+            let userInput = prompt('Escribe un número entero y positivo:');
+            input = parseFloat(userInput);
+        }
+
+        question();
+
+        while (isNaN(input)) {
+            console.log('¡Eso no es un número!');
+            question();
+        }
+
+        if (input < 0) {
+            console.log('¡Número negativo!');
+            console.log('Transformando a positivo...');
+            input = input * -1;
+        }
+
+        if (input % 1 !== 0) {
+            console.log('Redondeando número no entero...');
+            input = Math.round(input);
+        }
+
+        let resultado = 1;
+        for (let i = 1; i <= input; i++) {
+            resultado *= i;
+        }
+
+        const mensaje = `El factorial de ${input} es: ${resultado}`;
+        console.log(mensaje);
+    </script>
+</body>
+
+</html>

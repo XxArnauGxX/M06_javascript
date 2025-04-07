@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <textarea name="text" id="textarea"></textarea>
+    <script>
+        const textarea = document.getElementById('textarea');
+        let input = prompt('Introduce un número: ');
+        let inputInt = parseInt(input);
+        const inputInicial = inputInt;
+
+        let inputArray = [];
+        for (let i = input.length - 1; i >= 0; i--) {
+            inputArray.push(input[i]);
+        }
+
+        let result = inputArray.join('');
+        let resultInteger = parseInt(result);
+
+        if (inputInicial === resultInteger) {
+            textarea.innerText = 'Es palíndromo';
+        } else {
+            textarea.innerText = 'No es palíndromo';
+        }
+    </script>
+</body>
+
+</html>
