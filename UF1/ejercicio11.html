@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercise</title>
+</head>
+
+<body>
+    <h1>JavaScript</h1>
+    <p>Write your name: <input id="name" type="text" /></p>
+    <button id="execute">Execute</button>
+
+    <script>
+        const button = document.getElementById('execute');
+        const name = document.getElementById('name');
+
+        button.addEventListener("click", () => {
+            console.log('Obteniendo nombre');
+            const nombre = name.value;
+            console.log('Guardando nombre en las cookies...');
+            document.cookie = `nombre=${nombre}; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/`;
+            console.log(document.cookie);
+        })
+    </script>
+</body>
+
+</html>

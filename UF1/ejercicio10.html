@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <textarea name="numeros-armstrong" id="textarea"></textarea>
+    <script>
+        const textarea = document.getElementById('textarea');
+        let resultado = '';
+        for (let i = 100; i <= 9999; i++) {
+            const numStr = i.toString();
+            const numDigits = numStr.length;
+            let suma = 0;
+            for (let j = 0; j < numDigits; j++) {
+                suma = suma + Math.pow(parseInt(numStr[j]), numDigits);
+            }
+            if (suma === i) {
+                resultado = resultado + `${i} es un número de Armstrong\n`;
+            }
+        }
+
+        textarea.textContent = resultado;
+
+    </script>
+</body>
+
+</html>
