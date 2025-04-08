@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const cadena = prompt('Introduce una frase: ');
+
+        const resultado = reverseStr(cadena);
+        console.log(resultado);
+
+        function reverseStr(cadena) {
+            let array = cadena.split(' ');
+            let arrayReversed = array.reverse();
+            let arrayReversedString = arrayReversed.toString();
+            return arrayReversedString;
+        }
+    </script>
+</body>
+
+</html>
