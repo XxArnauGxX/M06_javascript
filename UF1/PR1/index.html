@@ -12,16 +12,20 @@
 <body>
     <header>
         <button><img src="" alt=""></button>
-        <div>
-            <nav>
-                <li>
-                    <ul><a href=""></a></ul>
-                    <ul><a href=""></a></ul>
-                    <ul><a href=""></a></ul>
-                </li>
-            </nav>
-            <div>
-                <p id="chips"></p>
+        <nav>
+            <li>
+                <ul><a href=""></a></ul>
+                <ul><a href=""></a></ul>
+                <ul><a href=""></a></ul>
+            </li>
+        </nav>
+        <div class="chips-container">
+            <div class="chips-container-counter">
+                <p id="chips">0</p>
+            </div>
+            <div class="chips-container-input">
+                <input type="number" id="add-chips" placeholder="Añadir fichas">
+                <button id="add-chips-btn">+</button>
             </div>
         </div>
     </header>

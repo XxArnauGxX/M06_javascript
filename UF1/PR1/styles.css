@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: gray;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100vw;
+    height: 6rem;
+    background-color: rgb(80, 80, 80);
+    box-shadow: 0px 0px 100px 1px black;
+}
+
+.chips-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-right: 2px solid gray;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    width: 17rem;
+    height: 5rem;
+    border-radius: 4px;
+}
+
+.chips-container-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid gray;
+    width: 5rem;
+    height: 5rem;
+    background-color: white;
+    border-radius: 4px 0px 0px 4px;
+}
+
+#chips {
+    color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2rem;
+}
+
+.chips-container-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.75rem;
+}
+
+#add-chips {
+    border-radius: 4px;
+    border: 2px solid rgb(60, 60, 60);
+    height: 2rem;
+    width: 8rem;
+}
+
+#add-chips::placeholder {
+    color: rgb(194, 194, 194);
+    padding-left: 0.25rem;
+}
+
+#add-chips-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 2rem;
+    margin: 2px;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 4px;
+    border: none;
+    background-color: rgb(153, 153, 153);
+    box-shadow: inset 0px 0px 2px 2px rgb(60, 60, 60);
+}
