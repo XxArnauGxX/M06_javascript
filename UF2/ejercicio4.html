@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitalizar</title>
+</head>
+
+<body>
+    <script>
+        const input = prompt('Escribe una frase:');
+
+        if (input !== null) {
+            console.log(capitalize(input));
+        } else {
+            console.log("No escribiste nada.");
+        }
+
+        function capitalize(frase) {
+            const palabras = frase.split(' ');
+
+            const capitalizadas = palabras.map(palabra =>
+                palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase()
+            );
+
+            return capitalizadas.join(' ');
+        }
+    </script>
+</body>
+
+</html>
