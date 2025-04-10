@@ -1,9 +1,10 @@
+import { setCookie, getCookie } from "./cookiesController.js";
+
 const contadorChips = document.getElementById('chips');
-// add chips
 const addChipsBtn = document.getElementById('add-chips-btn');
 const addChipsInput = document.getElementById('add-chips');
 
-let chipsValue = parseInt(getCookie('chips')) || 0;
+export let chipsValue = parseInt(getCookie('chips')) || 0;
 contadorChips.textContent = chipsValue;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,23 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         chipsValue = chipsValue + inputValue;
         contadorChips.textContent = chipsValue;
-        setCookie('chips', chipsValue);
+        setCookie('myChips', chipsValue);
 
         alert(`¡Has añadido ${inputValue} fichas!`);
         addChipsInput.value = '';
     })
 });
-
-function getCookie(name) {
-    const cookies = document.cookie.split(';');
-    for (const cookie of cookies) {
-        const [cookieName, cookieValue] = cookie.trim().split('=');
-        if (cookieName === name) {
-            return cookieValue;
-        }
-    }
-}
-
-function setCookie(name, value) {
-    document.cookie = `${name}=${value}; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/;`;
-}

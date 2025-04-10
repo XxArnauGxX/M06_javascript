@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Salle BET</title>
     <link rel="stylesheet" href="./styles.css">
-    <script type="module" src="./chipsController.js"></script>
+    <script type="module" src="./cookiesController.js"></script>
+    <script type="module" src="./addChipsController.js"></script>
+    <script type="module" src="./betController.js"></script>
 </head>
 
 <body>
@@ -29,7 +31,24 @@
             </div>
         </div>
     </header>
-    <main></main>
+    <main class="bet-container">
+        <label for="bet">Fichas a apostar:</label>
+        <input type="number" id="bet" name="bet">
+
+        <label for="bet-type">Selecciona el tipo de apuesta:</label>
+        <select name="bet-type" id="bet-type">
+            <option value="par">par</option>
+            <option value="impar">impar</option>
+        </select>
+
+        <label for="bet-number">Número a apostar:</label>
+        <input type="number" name="bet-number" id="bet-number">
+
+        <button id="bet-btn">GIRAR RULETA</button>
+    </main>
+    <section class="output-container">
+        <p id="result"></p>
+    </section>
     <footer></footer>
 </body>
 
