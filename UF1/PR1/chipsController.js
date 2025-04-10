@@ -3,26 +3,37 @@ const contadorChips = document.getElementById('chips');
 const addChipsBtn = document.getElementById('add-chips-btn');
 const addChipsInput = document.getElementById('add-chips');
 
-let chipsValue = 0;
-document.cookie = `chips=${chipsValue};`;
+let chipsValue = parseInt(getCookie('chips')) || 0;
+contadorChips.textContent = chipsValue;
 
 document.addEventListener('DOMContentLoaded', () => {
-
     addChipsBtn.addEventListener('click', () => {
-        if (addChipsInput.value <= 0) {
-            alert('El valor a añadir no puede ser negativo o 0');
-        } else {
-            alert(`¡Has añadido: ${addChipsInput.value} fichas!`);
-            chipsValue = parseInt(chipsValue) + parseInt(addChipsInput.value);
-            contadorChips.textContent = `${chipsValue}`;
+        const inputValue = parseInt(addChipsInput.value);
+        if (!inputValue || inputValue <= 0 || inputValue > 9999) {
+            alert('¡El valor a añadir debe estar entre 1 y 9999!');
+            addChipsInput.value = '';
+            return;
         }
+
+        chipsValue = chipsValue + inputValue;
+        contadorChips.textContent = chipsValue;
+        setCookie('chips', chipsValue);
+
+        alert(`¡Has añadido ${inputValue} fichas!`);
+        addChipsInput.value = '';
     })
 });
 
 function getCookie(name) {
-
+    const cookies = document.cookie.split(';');
+    for (const cookie of cookies) {
+        const [cookieName, cookieValue] = cookie.trim().split('=');
+        if (cookieName === name) {
+            return cookieValue;
+        }
+    }
 }
 
 function setCookie(name, value) {
-
+    document.cookie = `${name}=${value}; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/;`;
 }
