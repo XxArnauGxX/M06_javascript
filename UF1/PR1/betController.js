@@ -8,20 +8,44 @@ const betNumberInput = document.getElementById('bet-number');
 const betBtn = document.getElementById('bet-btn');
 const output = document.getElementById('result');
 const chipsDisplay = document.getElementById('chips');
+const testType = document.getElementById('test-type');
+
+function updateChipsAndUI(won, amount, message) {
+    if (won) {
+        chips += amount;
+    }
+    output.textContent = message;
+    chipsDisplay.textContent = chips;
+    setCookie('chips', chips);
+    betChipsInput.value = '';
+    betNumberInput.value = '';
+}
 
 betBtn.addEventListener('click', () => {
     const betAmount = parseInt(betChipsInput.value);
     const betType = betTypeInput.value;
     const betNumber = betNumberInput.value === '' ? null : parseInt(betNumberInput.value);
 
-    // Validar fichas de apuesta
+    // Validate bet amount
     if (isNaN(betAmount) || betAmount > chips || betAmount <= 0) {
         alert('¡Fichas insuficientes o cantidad inválida!');
         betChipsInput.value = '';
         return;
     }
 
-    // Validar número si se ha introducido
+    // Handle test cases
+    if (testType.value !== 'no-test') {
+        chips -= betAmount;
+        if (testType.value === 'win-test') {
+            const winAmount = betNumber !== null ? betAmount * 2 : betAmount * 1.5;
+            updateChipsAndUI(true, winAmount, '¡Has ganado!');
+        } else {
+            updateChipsAndUI(false, 0, '¡Has perdido!');
+        }
+        return;
+    }
+
+    // Validate bet number if provided
     if (betNumber !== null) {
         if (betNumber < 0 || betNumber > 36 || !Number.isInteger(betNumber)) {
             alert('ERROR: El número debe ser entre 0 y 36');
@@ -37,46 +61,27 @@ betBtn.addEventListener('click', () => {
         }
     }
 
-    // Generar número aleatorio
-    const winningNumber = randomNumber();
-    output.textContent = `Número ganador: ${winningNumber}`;
-
-    // Restar apuesta inicial
-    chips -= betAmount;
-    let won = false;
-
-    // Comprobar resultado
+    // Process the bet
+    const winningNumber = Math.floor(Math.random() * 37);
     const isWinningNumberEven = winningNumber % 2 === 0;
+    chips -= betAmount;
 
-    // Apuesta por número específico
-    if (betNumber !== null) {
-        if (betNumber === winningNumber) {
-            chips += betAmount * 3;
-            output.textContent += ' - ¡Has ganado! Número exacto';
-            won = true;
-        }
-    }
-    // Apuesta solo por tipo (par/impar)
-    else if ((betType === 'par' && isWinningNumberEven) ||
-        (betType === 'impar' && !isWinningNumberEven)) {
-        chips += betAmount * 1.5;
-        output.textContent += ` - ¡Has ganado! Era ${isWinningNumberEven ? 'par' : 'impar'}`;
+    let won = false;
+    let winAmount = 0;
+    let message = '';
+
+    if (betNumber !== null && betNumber === winningNumber) {
         won = true;
+        winAmount = betAmount * 2;
+        message = `¡Has ganado! Número ganador: ${winningNumber}`;
+    } else if (!betNumber && ((betType === 'par' && isWinningNumberEven) || 
+                             (betType === 'impar' && !isWinningNumberEven))) {
+        won = true;
+        winAmount = betAmount * 1.5;
+        message = `¡Has ganado! Era ${isWinningNumberEven ? 'par' : 'impar'}`;
+    } else {
+        message = `Has perdido. Número ganador: ${winningNumber}`;
     }
 
-    if (!won) {
-        output.textContent += ' - Has perdido';
-    }
-
-    // Actualizar chips en pantalla y cookies
-    chipsDisplay.textContent = chips;
-    setCookie('chips', chips);
-
-    // Limpiar campos
-    betChipsInput.value = '';
-    betNumberInput.value = '';
+    updateChipsAndUI(won, winAmount, message);
 });
-
-function randomNumber() {
-    return Math.floor(Math.random() * 37);
-}

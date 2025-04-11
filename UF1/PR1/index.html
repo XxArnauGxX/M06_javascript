@@ -15,11 +15,11 @@
     <header>
         <button><img src="./logo-casino.png" width="130" alt="Logo del casino"></button>
         <nav>
-            <li>
-                <ul><a href="#">Casino</a></ul>
-                <ul><a href="#">Sobre nosotros</a></ul>
-                <ul><a href="#">Contacto</a></ul>
-            </li>
+            <ul>
+                <li><a href="#">Casino</a></li>
+                <li><a href="#">Sobre nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
         </nav>
         <div class="chips-container">
             <div class="chips-container-counter">
@@ -32,19 +32,27 @@
         </div>
     </header>
     <main class="bet-container">
-        <label for="bet">Fichas a apostar:</label>
-        <input type="number" id="bet" name="bet">
+        <article>
+            <label for="bet">Fichas a apostar:</label>
+            <input type="number" id="bet" name="bet">
 
-        <label for="bet-type">Selecciona el tipo de apuesta:</label>
-        <select name="bet-type" id="bet-type">
-            <option value="par">par</option>
-            <option value="impar">impar</option>
-        </select>
+            <label for="bet-type">Selecciona el tipo de apuesta:</label>
+            <select name="bet-type" id="bet-type">
+                <option value="par">par</option>
+                <option value="impar">impar</option>
+            </select>
 
-        <label for="bet-number">Número a apostar:</label>
-        <input type="number" name="bet-number" id="bet-number">
+            <label for="bet-number">Número a apostar:</label>
+            <input type="number" name="bet-number" id="bet-number">
 
-        <button id="bet-btn">GIRAR RULETA</button>
+            <button id="bet-btn">GIRAR RULETA</button>
+
+            <select name="test-type" id="test-type">
+                <option value="no-test">No test</option>
+                <option value="win-test">WIN test</option>
+                <option value="lose-test">LOSE test</option>
+            </select>
+        </article>
     </main>
     <section class="output-container">
         <p id="result"></p>
